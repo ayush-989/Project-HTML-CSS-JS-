@@ -33,7 +33,7 @@ nav{
 .logo img{
     width: 32px;
 }
-
+/* adding tool bar */
 .toolbar-item button{
     cursor: pointer !important;
     color: white !important;
