@@ -1,41 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #74ebd5, #acb6e5);
+    background: black;
     height: 100vh;
+    overflow: hidden;
+}
+
+.app {
+    width: 100vw;
+    height: 100vh;
+}
+
+.slider {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 400vw;
+    height: 100vh;
+    transition: transform 0.5s ease-in-out;
 }
 
-.weather-container {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    width: 320px;
-    text-align: center;
-    box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
-}
-
-input {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-}
-
-button {
-    padding: 10px 15px;
-    border: none;
-    background: #007BFF;
+.city {
+    width: 100vw;
+    height: 100vh;
+    padding: 60px 30px;
     color: white;
-    cursor: pointer;
-    border-radius: 5px;
 }
 
-button:hover {
-    background: #0056b3;
+.city h1 {
+    font-size: 36px;
+    font-weight: 500;
 }
 
-.weather-info p {
-    margin: 8px 0;
-    font-size: 16px;
+.city h2 {
+    font-size: 80px;
+    margin: 20px 0;
+}
+
+.city p {
+    font-size: 24px;
+}
+
+/* Climate Backgrounds */
+.sunny {
+    background: linear-gradient(#4facfe, #00f2fe);
+}
+
+.cloudy {
+    background: linear-gradient(#757f9a, #d7dde8);
+}
+
+.rainy {
+    background: linear-gradient(#314755, #26a0da);
+}
+
+.cold {
+    background: linear-gradient(#83a4d4, #b6fbff);
 }
