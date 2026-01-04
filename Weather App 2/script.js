@@ -1,29 +1,33 @@
-const apiKey = "YOUR_API_KEY_HERE"; // Replace with your OpenWeatherMap API key
+let slider = document.getElementById("slider");
+let index = 0;
 
-function getWeather() {
-    const city = document.getElementById("city").value;
+let startX = 0;
+let endX = 0;
 
-    if (city === "") {
-        alert("Please enter a city name");
-        return;
+document.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+});
+
+document.addEventListener("mousedown", e => {
+    startX = e.clientX;
+});
+
+document.addEventListener("mouseup", e => {
+    endX = e.clientX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    if (startX - endX > 50 && index < 3) {
+        index++;
+    } else if (endX - startX > 50 && index > 0) {
+        index--;
     }
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("location").innerText = data.name;
-            document.getElementById("temperature").innerText = 
-                `🌡 Temperature: ${data.main.temp} °C`;
-            document.getElementById("condition").innerText = 
-                `🌥 Condition: ${data.weather[0].description}`;
-            document.getElementById("humidity").innerText = 
-                `💧 Humidity: ${data.main.humidity}%`;
-            document.getElementById("wind").innerText = 
-                `💨 Wind Speed: ${data.wind.speed} m/s`;
-        })
-        .catch(() => {
-            alert("City not found!");
-        });
+    slider.style.transform = `translateX(-${index * 100}vw)`;
 }
